@@ -10,7 +10,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class TasksRequestDto {
-	@NotBlank(message="Le tritre ne doit pas être vide")
+	@NotBlank(message="Le titre ne doit pas être vide")
 	@Size(min=3 , max=50 , message="Votre titre doit avoir une longueur comprise entre 3 et 20")
 	private String title;
 	@NotBlank(message="La description ne doit pas etre vide")
