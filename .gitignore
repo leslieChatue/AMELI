@@ -1,0 +1,25 @@
+# Compilation
+target/
+*.class
+
+# Logs
+*.log
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Fichiers sensibles
+application.properties
+application.yml
+
+# Maven wrapper (optionnel)
+.mvn/wrapper/maven-wrapper.jar
+
+# Node (si frontend)
+node_modules/
