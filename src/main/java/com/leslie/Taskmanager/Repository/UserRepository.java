@@ -9,4 +9,7 @@ import com.leslie.Taskmanager.Entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     // Spring gère automatiquement CRUD, plus besoin d'écrire du SQL, à par si l'on veut faire des requetes complexes
+	public Long countUsers() ;
+		
+	
 }

@@ -3,6 +3,8 @@ package com.leslie.Taskmanager.Controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import com.leslie.Taskmanager.ApiResponse.SearchResponse;
 import com.leslie.Taskmanager.Dto.UserRequest;
 import com.leslie.Taskmanager.Dto.UserResponse;
 import com.leslie.Taskmanager.Entity.User;
@@ -27,6 +29,14 @@ public class UserController {
 	public String ping() {
 		return "pong";
 	}
+	
+	//Recuperer la liste de tous les utilisateur sous forme d'API RESPONSE
+	@GetMapping("/TousLesUsers")
+	public SearchResponse<UserResponse> getListeUsers(@RequestParam String name , int page , int size ){
+		return null;
+		 
+	}
+	
 	// Methodologie simple
 	/*
 	 * @GetMapping //Verbe Http get

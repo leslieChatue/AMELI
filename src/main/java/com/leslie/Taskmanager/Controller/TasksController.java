@@ -48,6 +48,8 @@ public class TasksController {
 		public List<Tasks> ListerTousTaches() {
 			return task.getAllTasks();
 		}
+		
+	
 
 	//Mettre à jour une tâche
 		@PutMapping("/maj/{id}")
