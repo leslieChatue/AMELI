@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.leslie.Taskmanager.Dao.UserDao;
 import com.leslie.Taskmanager.Entity.User;
-import com.leslie.Taskmanager.Repository.UserRepository;
 
 @SpringBootTest
 public class UserDaoTest {
 	@Autowired
-	private UserRepository userDao;
+	private UserDao userDao;
 	public int tailleUser=0;
 	@Test
 	public void enregistrerTache() {

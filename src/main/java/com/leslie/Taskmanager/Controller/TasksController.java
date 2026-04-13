@@ -32,13 +32,13 @@ public class TasksController {
 	/*** Méthodes CRUD de base ***/
 
 	//Créer une tâche
-		@PostMapping(path = "/ajout")
+		/*@PostMapping(path = "/ajout")
 		public void CreerTache(@Valid @RequestBody TasksRequestDto tas) {
 			task.CreateTask(tas);
-		}
+		}*/
 
 	//Récupérer une tâche par son id
-		@GetMapping("/recupTache/{id}")
+	/*	@GetMapping("/recupTache/{id}")
 		public Tasks RecupTacheById( @PathVariable Long Id) {
 			return task.getTasksById(Id);
 		}
@@ -66,8 +66,8 @@ public class TasksController {
 		/*** Méthodes pour recherche / filtrage ***/
 
 	//Récupérer toutes les tâches d’un utilisateur
-	@GetMapping("/recupAll/{id}")
+/*	@GetMapping("/recupAll/{id}")
 	public List<Tasks> recupTaskByUser(@PathVariable Long id){
 		return task.getAllTaskByUser(id);
-	}
+	}*/
 }

@@ -1,11 +1,11 @@
-package com.leslie.Taskmanager.Repository;
+package com.leslie.Taskmanager.Dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import com.leslie.Taskmanager.Entity.Tasks;
 
 @Repository
-public interface TasksRepository extends JpaRepository<Tasks, Long> {
+public interface TasksDao extends JpaRepository<Tasks, Long> {
 
 
 }

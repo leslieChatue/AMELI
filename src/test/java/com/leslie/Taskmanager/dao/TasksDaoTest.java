@@ -7,18 +7,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.leslie.Taskmanager.Dao.TasksDao;
+import com.leslie.Taskmanager.Dao.UserDao;
 import com.leslie.Taskmanager.Entity.Status;
 import com.leslie.Taskmanager.Entity.Tasks;
-import com.leslie.Taskmanager.Repository.TasksRepository;
-import com.leslie.Taskmanager.Repository.UserRepository;
 
 @SpringBootTest
 public class TasksDaoTest {
 	public int tailleUser=0;
 	@Autowired
-	private TasksRepository task;
+	private TasksDao task;
 	@Autowired
-	private UserRepository userDao;
+	private UserDao userDao;
 	@SuppressWarnings("deprecation")
 	@Test
 	public void enregistrerTache() {

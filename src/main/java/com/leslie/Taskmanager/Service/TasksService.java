@@ -10,24 +10,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.leslie.Taskmanager.Dao.IUserDao;
+import com.leslie.Taskmanager.Dao.TasksDao;
+import com.leslie.Taskmanager.Dao.UserDao;
 import com.leslie.Taskmanager.Dto.TasksMapping;
 import com.leslie.Taskmanager.Dto.TasksRequestDto;
 import com.leslie.Taskmanager.Entity.Tasks;
 import com.leslie.Taskmanager.Entity.User;
 import com.leslie.Taskmanager.Exception.NullPointerEntityException;
 import com.leslie.Taskmanager.Exception.ResourceNotFoundException;
-import com.leslie.Taskmanager.Repository.TasksRepository;
-import com.leslie.Taskmanager.Repository.UserRepository;
 
 import jakarta.validation.Valid;
 
 @Service
 public class TasksService {
 
-	private final TasksRepository taskDao;//toujours declarer en final car c'est une bonne pratique spring
-	private final UserRepository userDao;
+	/*private final TasksDao taskDao;//toujours declarer en final car c'est une bonne pratique spring
+	private final IUserDao userDao;
 
-	public TasksService(TasksRepository taskDao ,UserRepository userDao) {
+	public TasksService(TasksDao taskDao ,IUserDao userDao) {
 		super();
 		this.taskDao = taskDao;
 		this.userDao = userDao;
@@ -36,18 +37,18 @@ public class TasksService {
 	/*** Méthodes CRUD de base ***/
 
 //Créer une tâche
-	public ResponseEntity<String> CreateTask(@Valid @RequestBody TasksRequestDto request ) {
+	/*public ResponseEntity<String> CreateTask(@Valid @RequestBody TasksRequestDto request ) {
 
 		User u = userDao.findById(request.getUser()).orElseThrow(()-> new ResourceNotFoundException("Aucun user trouvé avec l'id "+request.getUser()));
 		Tasks t=TasksMapping.requestToTasks(request);
 		t.setUser(u);
 		taskDao.save(t);
 		return   ResponseEntity.status(HttpStatus.CREATED).body("Création de votre tâche réussie");
-	}
+	}*/
 
 	
 //Récupérer une tâche par son id
-	public Tasks getTasksById(Long Id) {
+	/*public Tasks getTasksById(Long Id) {
 		
 			return	taskDao.findById(Id).orElseThrow(()-> new ResourceNotFoundException("Aucune tâche trouvée avec l'id"+Id+" dans la table"));
 	}
@@ -82,9 +83,9 @@ public class TasksService {
 	/*** Méthodes pour recherche / filtrage ***/
 
 //Récupérer toutes les tâches d’un utilisateur
-public List<Tasks> getAllTaskByUser(Long id){
+/*public List<Tasks> getAllTaskByUser(Long id){
 	return taskDao.findAll().stream().filter(ta -> ta.getUser().getId().equals(id)).collect(Collectors.toList());
-}
+}*/
 //Récupérer toutes les tâches par statut (en cours, done, pending)
 
 //Récupérer toutes les tâches d’un utilisateur selon le statut

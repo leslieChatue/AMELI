@@ -1,20 +1,18 @@
 package com.leslie.Taskmanager.Controller;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import com.leslie.Taskmanager.ApiResponse.SearchResponse;
-import com.leslie.Taskmanager.Dto.UserRequest;
 import com.leslie.Taskmanager.Dto.UserResponse;
 import com.leslie.Taskmanager.Entity.User;
 import com.leslie.Taskmanager.Service.UserService;
-import jakarta.validation.Valid;
-import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController //
 //Rest c'est pour préciser que c'est un controller qui travaille avec des API REST
 @RequestMapping("/users") // Le lien de base pour nos URL
+@Slf4j
 public class UserController {
 
 	//Une API SERIEUSE ne renvoie JAMAIS directement l'intégralites des propriétes  de ses entités JPA
@@ -31,9 +29,10 @@ public class UserController {
 	}
 	
 	//Recuperer la liste de tous les utilisateur sous forme d'API RESPONSE
-	@GetMapping("/TousLesUsers")
-	public SearchResponse<UserResponse> getListeUsers(@RequestParam String name , int page , int size ){
-		return null;
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, path="/TousLesUsers")
+	@ResponseBody
+	public SearchResponse<UserResponse> getListeUsers(@RequestParam String name ){
+		return userService.getAllUsers(name);
 		 
 	}
 	
@@ -43,23 +42,25 @@ public class UserController {
 	 *  public List<User> getUsers() {
 	 *   return userService.getAllUsers();
 	 *  }
-	 * 
-	 * @PostMapping //Verbe Http post
-	 *  public User createUser(@RequestBody User user)
-	 * { //RequestBody indique a java que les données qui vont être fournies seront
-	 * au fichier Json
-	 *  return userService.saveUser(user); }
+	 *
 	 */
+	 @PostMapping("/addUser") //Verbe Http post
+	  public User createUser(@RequestBody User user)
+	 { //RequestBody indique a java que les données qui vont être fournies seront
+	 //au fichier Json
+	  return userService.saveUser(user);
+	  }
+	 
 
 	// Methodologie complexe pour faire des recherches d'API propres
 
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE , path="/listUsers")//Produces indique le type de données que la methode retournera
+	/*@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE , path="/listUsers")//Produces indique le type de données que la methode retournera
 	@ResponseStatus(code = HttpStatus.ACCEPTED)//On precise le code de retour de la methode (Ce sont les bonnes pratiques de code/clean code)
 	public List<UserResponse> getUsersDto() {//On utilise un DTO  a la place d'un objet simple pour controler les données qui seront affichées à l'utilisateur lors de sa recherche
 		return userService.getAllUsers();
 	}
 	
-	@GetMapping(path ="/oneUser/{id}" , produces =MediaType.APPLICATION_JSON_VALUE ) // C'est possible de combiner @path et produces dans le getMapping???
+	/*@GetMapping(path ="/oneUser/{id}" , produces =MediaType.APPLICATION_JSON_VALUE ) // C'est possible de combiner @path et produces dans le getMapping???
 	@ResponseStatus(code = HttpStatus.ACCEPTED)
 	public UserResponse getUsersDtoById(@PathVariable Long id) {
 		return userService.getUserById(id);
@@ -70,11 +71,11 @@ public class UserController {
 	public User createUserDto( @Valid @RequestBody UserRequest urq) {
 		return userService.saveUser(urq);
 	}
-	
-	@DeleteMapping(path="/suppUser/{id}", produces =MediaType.APPLICATION_JSON_VALUE )
+	*/
+	/*@DeleteMapping(path="/suppUser/{id}", produces =MediaType.APPLICATION_JSON_VALUE )
 	@ResponseStatus(code = HttpStatus.GONE)
 	public void deleteUserDto(@PathVariable Long id) {
 		 userService.deleteUserById(id);
 	}
-
+*/
 }
